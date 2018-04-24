@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JVS-IN : Exercice 01</title>
+
+</head>
+<body>
+    <pre>
+
+    </pre>
+
+    <script>
+             var content = '';
+             // console.log(navigator);
+             // prenom = prompt('Entrez votre prénom'); // boîte de dialogue
+             // console.log(prenom);                    // affectation de la variable
+             // alert(prenom);                          // affiche la varable
+             // document.write(prenom);                 // ecrit la variable dans la page web
+             // var pre = document.querySelector('body > pre');
+            var pre = document.querySelector('pre');
+            for (p in navigator) {
+               content += p + ':'
+                    + navigator[p]
+                    + '\n';
+            }
+            pre.innerHTML = content;
+    </script>    
+</body>
+</html>

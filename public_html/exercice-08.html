@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>exercice 8</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/css-exercice-08.css" rel="stylesheet" type="text/css"/>
+        <script src="js/lib/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () { //lorsque le document est prêt
+                   $('td:contains(1)').next().css('background-color', 'blue'); //1
+                   $('td:contains(2)').nextAll().css('background-color', 'blue'); //2
+                   $('td:contains(3)').nextAll().addBack().css('background-color', 'blue'); //3
+                   $('td:contains(4)').prev().css('background-color', 'blue'); //4
+                   $('td:contains(5)').prevAll().css('background-color', 'blue'); //5
+                   $('td:contains(6)').parent().children().css('background-color', 'blue'); //6
+            });
+        </script>
+    </head>
+    <body>
+        <div id="page">
+            <table >
+                <thead>
+                    <tr>
+                        <th>cell 1</th>
+                        <th>cell 2</th>
+                        <th>cell 3</th>
+                        <th>cell 4</th>
+                        <th>cell 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>4</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>5</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>6</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </body>
+</html>
