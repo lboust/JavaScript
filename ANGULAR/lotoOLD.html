@@ -1,0 +1,97 @@
+<html>
+<head>
+  <title>AngularJS</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+  <link href="loto.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+</head>
+
+<body>
+  <h2>Loto</h2>
+  <div ng-app="monapp" ng-controller="monController">
+<table>
+        <tr>
+                <td><div id="grille"/></td>
+            </tr>
+    <tr>
+        <td><input ng-click=loto.auto() type="button" value="Auto"></td>
+    </tr>
+    <tr>
+        <td><input ng-click=loto.tirage() type="button" value="Tirage"></td>
+    </tr>
+    <tr>  
+        <td><input ng-click=loto.gains() type="button" value="Gains"></td>
+    </tr>
+</table>
+
+
+  </div>
+  <script>
+        var monapp = angular.module("monapp", []);
+        monapp.controller("monController", function($scope){
+            $scope.loto = {
+                grille:[],
+                etat:[],
+                init : function(){
+                    for (var i=0;i<10;i++){
+                        var ligne=[];
+                        var ligneEtat=[];
+                        for (var j=0;j<5;j++){
+                            ligne.push(i+10*j);
+                            ligneEtat.push(false);
+                        }
+                        this.grille.push(ligne);
+                        this.etat.push(ligneEtat);                       
+                    }                    
+                },
+                afficher : function(){
+                    var tag=document.getElementById("grille");
+                    var buff = "<table>";
+                    for (var i=0;i<10;i++){
+                        var ligne="<tr>";
+                        for (var j=0;j<5;j++){
+                            ligne+= "<td><span id='i + _ + j'>" + this.grille[i][j]+"</span></td>"
+                        }
+                        ligne+="</tr>";
+                        buff+=ligne;
+                    }
+                    buff+="</table>";
+                    tag.innerHTML=buff;
+                    var spans = document.getElementsByTagName("span");
+                    for (var i = 0 ; i<tds.length;i++){
+                        spans[i].addEventListener('click', function(){
+                            if(this.style.backgroundColor=="cyan"){
+                                this.style.backgroundColor="yellow";
+                            } else {
+                                this.style.backgroundColor="cyan";
+                                this.selection(this.loto, )
+                            }
+                            
+                            
+                        });
+                        spans[i].loto=this;
+                        spans[i].selection=this.selection;
+                    }
+                },
+                selection : function(lotot, o, v){
+                    console.log(o + "" + v )
+                    var i,j;
+                    lignecolonne=o.id.split("_");
+                },
+                auto : function(){
+                    console.log("auto");
+                },
+                tirage : function(){
+                    console.log("tirage");
+                },
+                gains : function(){
+                    console.log("gains");
+                }
+            }
+            $scope.loto.init();
+            $scope.loto.afficher();
+
+        });
+  </script>
+</body>
+</html>

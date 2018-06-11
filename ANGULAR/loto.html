@@ -1,0 +1,156 @@
+<html>
+    <head>
+        <title>AngularJS</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+        <link href="loto.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+      </head>
+
+<body>
+  <h2>Loto</h2>
+  <div ng-app="monapp" ng-controller="monController">
+  <table>
+           <tr>
+           <td><div id='grille'/></td>
+           </tr>
+       <tr>
+       <td><input ng-click='loto.auto()' type='button' value="Auto"></td>
+       </tr>
+       <tr>
+       <td ><div id="valeurTirage">{{loto.valeurTirage}}</div></td>
+       </tr>
+       <tr>
+       <td><input ng-click='loto.tirage()'  type='button' value="Tirage"></td>
+       </tr>
+       <tr>
+       <td><input ng-click='loto.gains()' type='button' value="Gains"></td>
+       </tr>
+  </table>
+  </div>
+  <script>
+        var monapp = angular.module("monapp", []);
+        monapp.controller("monController", function($scope){
+            $scope.loto = {
+                grille : [],
+                etat : [],
+                valeurTirage:'',
+                init : function () {
+                    for (var l=0; l<10; l++)
+                    {
+                        var ligne = [];
+                        for (var c=0; c<5; c++)
+                        {
+                            ligne.push (l + c * 10)
+                        }
+                        this.grille.push (ligne)
+                    }
+                    for (var l=0; l<10; l++)
+                    {
+                        var ligne = [];
+                        for (var c=0; c<5; c++)
+                        {
+                            ligne.push (false)
+                        }
+                        this.etat.push (ligne)
+                    }
+                },
+                afficher: function () {
+                    var tag = document.getElementById ("grille")
+                    var buff = "<table border='1'>"
+                    for (var l=0; l<10; l++)
+                    {
+                        var ligne = "<tr>"
+                        for (var c=0; c<5; c++)
+                        {
+                            var couleur = this.etat[l][c]?'yellow':'cyan'
+                            ligne += "<td><span style='background-color:"+couleur+"' 'id="+ l + "_" + c +"'>" + this.grille[l][c] + "</span></td>"
+                        }
+                        ligne += "</tr>"
+                        buff+=ligne
+                    }
+                    buff += "</table>"
+                    tag.innerHTML = buff
+                    var spans = document.getElementsByTagName ("span")                    
+                    for (var i =0 ; i< spans.length; i++)
+                    {
+                        spans[i].addEventListener("click", function ()
+                        {
+                            if (this.style.backgroundColor == 'yellow')
+                            {
+                                this.style.backgroundColor ='cyan'
+                                this.selection (this.loto,this, false)
+                            }
+                            else 
+                            {
+                                this.style.backgroundColor ='yellow'
+                                this.selection (this.loto, this, true)
+                            }
+                        })
+                        spans[i].loto = this
+                        spans[i].selection = this.selection
+                    }
+                },
+                selection : function (loto, o, v)
+                {
+                    console.log (o + "::" + v)
+                    var c,l;
+                    lc = o.id.split("_")
+                    l=parseInt(lc[0])
+                    c=parseInt(lc[1])
+                    console.log (l + "::" + c)
+                    loto.etat[l][c] = v 
+                },
+               reset : function (){
+                   for(var i = 0;i<10;i++){
+                       for (var j = 0; j<5;j++) {
+                           this.etat[i][j]=false;
+                       }
+                   }
+                },
+                auto : function (){
+                    var l, c
+                    this.reset();
+                    for(var i=0; i<6; i++){
+                        l=Math.ceil(Math.random()*9);
+                        c=Math.ceil(Math.random()*4);
+                        if(!this.etat[l][c]){
+                            this.etat[l][c] = true;
+                        }else {
+                            i--;
+                        }
+                    }
+                    this.afficher();
+                },
+                tirage : function (){
+                    //initialization
+                    var v = Math.ceil(Math.random()*48 +1);
+                    var tirage= [];
+                    tirage.push(v);
+                    this.valeurTirage=v;
+                    //flow control
+                    for (var i=0;i<5;i++){
+                         v = Math.ceil(Math.random()*48 +1);
+                        for(var j=0;j<tirage.length;j++){
+                            if (v!=tirage[j]) {
+                                tirage.push(v);
+                                console.log(tirage);
+                                this.valeurTirage +='-' + v ;
+                                break;
+                            } else  {
+                                i--;
+                                break;
+                            }                           
+                        }
+                    }
+                },
+                gains : function (){
+                    console.log("gains")
+                },
+            }
+            $scope.loto.init();
+            $scope.loto.afficher();
+            console.log($scope.loto.grille)
+        });
+  </script>
+</body>
+</html>

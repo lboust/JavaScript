@@ -1,0 +1,11 @@
+h2{
+    border: 2px grey dotted;
+    width: 500px;
+    color: orangered;
+    background-color: white;
+}
+body{
+    background-image: url(https://dailygeekshow.com/wp-content/uploads/2016/03/infinite-nombres-mathematique-7.jpg);
+    background-repeat: no-repeat;
+        background-size: 40%;
+}

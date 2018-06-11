@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Exercice</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</head>
+<body>
+<h2>Timer</h2>
+<div ng-app="monapp" ng-controller="monController">
+{{data}} </br>
+{{personne.getAll()}}
+<button ng_click="personne.getAll()">Cliquer ici</button>
+</div>
+<script>
+    var monapp = angular.module("monapp", []);
+    monapp.controller("monController", function($scope) {
+        $scope.data=1234;
+        $scope.personne= {
+            nom : "TOTO",
+            prenom : "toto",
+            age: 10,
+            getAll : function () {
+                $scope.data= this.nom + " " + this.prenom + " " + this.age
+            }
+        }
+        $scope.data="vide";
+    });
+</script>
+
+</body>
+</html>

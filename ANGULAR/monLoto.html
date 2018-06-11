@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Devine un nombre</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<link href="loto.css" rel="stylesheet" type="text/css"/>
+<script src="js/lib/jquery-3.3.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div ng-app="monapp" ng-controller="monController">
+<h2 >Loto</h2>
+
+<table id="table">
+
+        <tbody>
+
+        </tbody>
+</table>
+
+
+<button ng_click="">AUTO</button> </br>
+
+</div>
+
+
+<script>
+
+    for(i=0;i<10;i++){
+        $('#table').append( '<tr><td>' +"<button style='background: {{loto.choisir()}}' ng_click=''>"+i+'</button>' +'<button ng_click="">'+(i+10)+'</button>'+'<button ng_click="">'+(i+20)+'</button>'+'<button ng_click="">'+(i+30)+'</button>'+'<button ng_click="">'+(i+40)+'</button>' +'</td></tr>' );
+    }
+    
+
+
+    var monapp = angular.module("monapp", []);
+    monapp.controller("monController", function($scope) {
+
+        $scope.loto= {
+            choisir : function () {
+                return green;
+            },
+            
+            auto : function () {
+                
+            },
+            tirage : function() {
+
+            },
+            gains : function() {
+
+            }
+          
+        },
+        $scope.message = ""
+    });
+
+</script>
+
+</body>
+</html>

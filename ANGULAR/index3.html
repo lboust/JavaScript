@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Angular JS Controller</title>
+</head>
+<body>
+<h2>AngularJS Sample Application</h2>
+<div ng-app="" ng-controller="LeController">
+Donnes provenant du controleur : valeur = {{data[3]}} <br/>
+Donnes provenant du controleur : {{personne.nom}} <br/>
+Donnes provenant du controleur : {{personne.nomcomplet()}} <br/>
+Donnes provenant du controleur : {{personne}} <br/>
+</div>
+<script>
+function LeController($scope) {
+   $scope.data = [1,2,3,'AA','BB'];
+   $scope.personne = {
+      nom: "BELHADJ",
+      prenom: "Karim",
+      nomcomplet: function() {
+         var o;
+         o = $scope.personne;
+         return o.nom + " " + o.prenom;
+      }
+   };
+}
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+body{
+    font-family: 'Jua', sans-serif;
+
+}
+table{
+    width: 400px;
+    border : 4px solid seashell;
+    border-radius: 2px;
+    margin: auto ;
+
+
+}
+input{
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 5px;
+    margin: 10px auto ;
+    font-family: 'Jua', sans-serif;
+    border-radius: 5px;
+    color: lightseagreen;
+}
+
+body{
+    background-image:url("https://i.pinimg.com/736x/e2/b8/2a/e2b82aded815e80351b929a77519adaa--tropical-wallpapers-tropical-iphone-wallpaper.jpg");
+    
+}
+#grille{
+    background-color: lightsteelblue;
+    border : none;
+}
+
+h2 {
+
+    color: rgb(0, 23, 100);
+    background-color: white;
+    width: 100px;
+    border-radius: 5px;
+    border: 3px goldenrod solid;
+    display: block;
+    margin: 20px auto ;
+    text-align: center;
+}
+#grille td{
+    border: 1px solid grey;
+    background-color: white;
+    width: 20px;
+}
+td{
+text-align: center;
+}
+#valeurTirage {
+
+    color: rgb(0, 23, 100);
+    background-color: white;
+    width: 200px;
+    border-radius: 5px;
+    border: 3px goldenrod solid;
+    display: block;
+    margin: 20px auto ;
+    padding: 10px;
+    text-align: center;
+}

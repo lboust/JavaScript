@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Ping Pong</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</head>
+<body>
+<h2>Ping pong</h2>
+<div ng-app="monapp" ng-controller="monController">
+    Gauche: <input type="text" ng-model="pingpong.gauche" name="gauche"/> 
+    Droite: <input type="text" ng-model="pingpong.droite" name="droite"/> </br>
+  
+<button ng_click="pingpong.gd()">--></button> </br>
+<button ng_click="pingpong.dg()"><--</button> </br>
+
+
+</div>
+<script>
+    var monapp = angular.module("monapp", []);
+    monapp.controller("monController", function($scope) {
+
+        $scope.pingpong= {
+            gauche : "",
+            droite : "",
+            gd : function () {
+                $scope.pingpong.droite= $scope.pingpong.gauche ;
+                $scope.pingpong.gauche= "" ;
+            },
+            dg : function () {
+                $scope.pingpong.gauche= $scope.pingpong.droite ;
+                $scope.pingpong.droite= "" ;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

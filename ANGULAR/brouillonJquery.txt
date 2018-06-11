@@ -1,0 +1,7 @@
+
+	
+	    for(i=0;i<10;i++){
+        $('#table').append( '<tr></tr>')
+        for(j=0;j<5;j++){
+            $('<tr></tr>').append( '<td>'+'<button ng_click="">'+(i+j*10)+'</button>'+'</td>' );
+        }

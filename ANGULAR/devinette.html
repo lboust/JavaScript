@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Devine un nombre</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<link href="devinette.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div ng-app="monapp" ng-controller="monController">
+<h2 >Devine un nombre entre 1 et 100 en {{guessANumber.countDown}} coup(s)</h2>
+
+    proposition: <input type="text" ng-model="guessANumber.currentNumber" name="currentNumber"/> 
+
+<button ng_click="guessANumber.compare()">OK</button> </br>
+
+<span style='color: {{guessANumber.color()}}'>{{message}}</span>
+
+
+</div>
+
+
+<script>
+    var monapp = angular.module("monapp", []);
+    monapp.controller("monController", function($scope) {
+
+        $scope.guessANumber= {
+            countDown : 10,
+            currentNumber : "",
+            secretNumber :Math.floor(Math.random() * Math.floor(100)),
+            compare : function () {
+                if($scope.guessANumber.currentNumber<$scope.guessANumber.secretNumber){
+                    $scope.message = "Essaie un nombre plus grand";
+                    $scope.guessANumber.countDown--;
+                } else if($scope.guessANumber.currentNumber>$scope.guessANumber.secretNumber){
+                    $scope.message = "Essaie un nombre plus petit";
+                    $scope.guessANumber.countDown--;
+                }else{
+                    $scope.message = "Gagné";
+                    $scope.guessANumber.countDown--;
+                }
+            },
+            color : function() {
+                if($scope.guessANumber.countDown==1) {
+                    return "orange";
+                } else if($scope.guessANumber.countDown==0) {  
+                    $scope.message = "Perdu. Essaie encore!";
+                    return "red";
+                }
+                else {
+                    return "green";
+                }
+            }
+          
+        },
+        $scope.message = ""
+    });
+</script>
+
+</body>
+</html>
